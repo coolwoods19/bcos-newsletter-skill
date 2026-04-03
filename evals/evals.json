@@ -1,0 +1,59 @@
+{
+  "skill_name": "bcos-newsletter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a BCOS newsletter from this event data. Here's the pipeline:\n\nEvent | Date & Time | Type | PIC | Status\n---\nDear HSBA Members, Join us for Hong Kong Trivia Night! Time: 7:45pm April 21, 2026. Venue: Slippery Slope @ 31A Keong Saik Rd (2nd floor). Cost: SG$40 nett (incl. 1 drink). Register by April 17. Registration: https://alt.jotfor.ms/260841695038463 | April 21, 2026 7:45pm | Collab | Chris | Marketing\nRewind: A 90s Social Afternoon. UCL Culture Club curated 90s-themed social for alumni across schools including UCL, Yale, INSEAD, NYU, LBS, Penn/Wharton, Columbia, Oxford, Cambridge, Cornell, Berkeley. Date: Saturday 2 May 2026, 11am-3pm. Venue: Havelock. Ticket: $68 incl lunch. Registration: https://luma.com/1qsytns3 | May 2, 2026 11am-3pm | Collab | Erica | Marketing\nDean Jennifer Chatman (BA 81, PhD 88) discusses the human edge of innovation at Haas. Hosted by Ong Tze Boon at BeyondX. Friday 8th May, 18:00-20:00. Beyond X, 21 Keppel Rd. RSVP: https://web.cvent.com/event/4eeccb1d-2802-4997-a5a6-745f4f2d8c89/register | May 8, 2026 6-8pm | Signature | Chris | Marketing\nPickleball Night | Early May | Signature | Erica | Planning\nWellness Talk with Columbia University | Mid May | Signature | Erica | Planning\nBoard Member Prep for BCOS Members | May/June | Signature | Chris | Planning\nSuper AI | May/June | Signature | Erica | Planning\nBerkeley AGM + Annual Gala | 14th Nov | Signature | Erica & Chris | Planning",
+      "expected_output": "Two files: (1) HTML email newsletter with Dean Chatman as featured event, HSBA Trivia + Rewind as event cards, 4 teaser events in On the Horizon, and Gala as Save the Date. (2) WhatsApp text summary with same content structure, emojis, raw links, under 1500 chars.",
+      "assertions": [
+        "HTML file is saved to /mnt/user-data/outputs/bcos-newsletter.html",
+        "WhatsApp file is saved to /mnt/user-data/outputs/bcos-whatsapp.txt",
+        "HTML uses Berkeley Blue #003262 and Gold #FDB515",
+        "HTML has inline styles only (no <style> blocks)",
+        "HTML contains all 3 RSVP/registration links",
+        "HTML contains Instagram, LinkedIn, Website links in footer",
+        "HTML contains Chris Fong and Erica Ding LinkedIn links",
+        "HTML contains membership sign-up link",
+        "HTML has Featured Event section with Dean Chatman",
+        "HTML has event cards for HSBA Trivia and Rewind",
+        "HTML has On the Horizon section with Pickleball, Wellness, Super AI, Board Prep",
+        "HTML has Save the Date for AGM + Gala Nov 14",
+        "WhatsApp uses *bold* formatting (not Markdown **bold**)",
+        "WhatsApp contains raw URLs (not hyperlinked text)",
+        "WhatsApp includes membership link",
+        "WhatsApp is under 2000 characters"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Hey, we have a new round of events for BCOS. Can you make the newsletter and WhatsApp blast?\n\nEvent | Date | Type | PIC | Status\n---\nNetworking Dinner at Burnt Ends. 20 seats only, $150pp. June 12 7pm. RSVP: https://forms.gle/abc123 | June 12, 2026 7pm | Signature | Chris | Marketing\nPickleball Social with Stanford Club. June 20, 4-7pm. East Coast Park. $25. Register: https://luma.com/pickle123 | June 20 4-7pm | Collab | Erica | Marketing\nBerkeley AGM + Annual Gala | 14th Nov | Signature | Erica & Chris | Planning",
+      "expected_output": "Two files: (1) HTML with Networking Dinner as featured (Signature + exclusive), Pickleball as event card, Gala as Save the Date. (2) WhatsApp summary, short and punchy.",
+      "assertions": [
+        "HTML file is created and presented",
+        "WhatsApp file is created and presented",
+        "HTML Featured Event is the Networking Dinner (Signature type, exclusive/intimate)",
+        "HTML has event card for Pickleball Social",
+        "HTML has Save the Date for AGM + Gala",
+        "No 'On the Horizon' teasers section since only Gala is in Planning and it's a Save the Date",
+        "WhatsApp includes both event details with raw links",
+        "Both files use correct BCOS branding and fixed links"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create the BCOS newsletter from this: https://docs.google.com/spreadsheets/d/1xOAJ7F949EGqE7_kaLQNC29q46rapQYvsSBWa9Y161A/edit?gid=0#gid=0",
+      "expected_output": "Claude fetches the Google Sheet, parses events, and generates both HTML newsletter and WhatsApp summary. If the sheet doesn't load properly, Claude asks the user to paste or upload the data instead of failing silently.",
+      "assertions": [
+        "Claude attempts to fetch the Google Sheets URL",
+        "If fetch succeeds: Claude produces both HTML and WhatsApp outputs",
+        "If fetch fails or data is unreadable: Claude asks user to paste data or upload CSV",
+        "Claude does not hallucinate event details not present in the data",
+        "HTML follows the BCOS template structure",
+        "WhatsApp follows the BCOS WhatsApp format"
+      ],
+      "files": []
+    }
+  ]
+}
