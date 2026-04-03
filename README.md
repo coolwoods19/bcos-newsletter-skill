@@ -29,6 +29,8 @@ Then restart Claude Code. The skill will appear as `/bcos-newsletter`.
 
 ## Event pipeline format
 
+**[View example Google Sheet](https://docs.google.com/spreadsheets/d/1xOAJ7F949EGqE7_kaLQNC29q46rapQYvsSBWa9Y161A/edit?usp=sharing)** — make a copy and use it as your template.
+
 The skill expects a Google Sheet with these columns:
 
 | Column | Content |
